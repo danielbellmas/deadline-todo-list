@@ -19,9 +19,13 @@ const App = () => {
   }, []);
 
   const addTodo = async (newTodo: Omit<Todo, '_id'>) => {
-    const createdTodo = await createTodo({ ...newTodo, deadline: new Date(newTodo.deadline) });
+    try {
+      const createdTodo = await createTodo({ ...newTodo, deadline: new Date(newTodo.deadline) });
 
-    setTodos([...todos, createdTodo]);
+      setTodos([...todos, createdTodo]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
