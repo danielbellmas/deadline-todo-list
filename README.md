@@ -1,30 +1,26 @@
-# Getting Started with Create React App
+# Deadline Todo List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Intro
 
-## Available Scripts
+This is a simple todo list app that allows you to add, edit, and delete tasks.
+The app is built using the React framework and uses a MongoDB database to store the tasks.
 
-In the project directory, you can run:
+## Running the client app
 
-### `npm start`
+To run the client app, run the following commands:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+npm start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Running the server app
 
-### `npm test`
+To run the server app, first you'll need to clone these two repos:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/danielbellmas/todos-service.git
+git clone https://github.com/danielbellmas/notification-service.git
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then, follow the instructions in the README.md file for each repo to run the server app.
