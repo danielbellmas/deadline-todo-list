@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Todo } from '../../types/todo';
+import { formatDateYYYYMMDD } from '../../utils/date';
+import './TodoListItem.css';
 
 interface TodoListItemProps {
   todo: Todo;
@@ -12,7 +14,7 @@ export const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove, onEdit }) 
 
   const [isEditable, setIsEditable] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
-  const [newDeadline, setNewDeadline] = useState(new Date(deadline).toISOString());
+  const [newDeadline, setNewDeadline] = useState(formatDateYYYYMMDD(new Date(deadline)));
 
   const onTodoChange = () => {
     onEdit({ ...todo, title: newTitle, deadline: new Date(newDeadline) });
@@ -20,19 +22,27 @@ export const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove, onEdit }) 
   };
 
   return isEditable ? (
-    <div>
+    <div className="todo-item-edit">
       <input type="text" value={newTitle} onChange={e => setNewTitle(e.target.value)} />
-      <input type="date" value={newDeadline} onChange={e => setNewDeadline(e.target.value)} />
-      <button onClick={onTodoChange}>Save</button>
-      <button onClick={() => setIsEditable(false)}>Cancel</button>
+      <input
+        type="date"
+        value={newDeadline}
+        onChange={e => setNewDeadline(formatDateYYYYMMDD(new Date(e.target.value)))}
+      />
+      <div className="action-buttons">
+        <button onClick={onTodoChange}>Save</button>
+        <button onClick={() => setIsEditable(false)}>Cancel</button>
+      </div>
     </div>
   ) : (
-    <div>
+    <div className="todo-item">
       <span>
-        {title} -&gt; {new Date(deadline).toLocaleDateString()}
+        {title} is due on <span className="date">{new Date(deadline).toLocaleDateString()}</span>
       </span>
-      <button onClick={() => setIsEditable(true)}>Edit</button>
-      <button onClick={() => onRemove(todo)}>X</button>
+      <div className="action-buttons">
+        <button onClick={() => setIsEditable(true)}>Edit</button>
+        <button onClick={() => onRemove(todo)}>X</button>
+      </div>
     </div>
   );
 };

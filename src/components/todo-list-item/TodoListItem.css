@@ -1,0 +1,27 @@
+.todo-item-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  margin: 8px 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 4px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: 4px;
+}
+
+.date {
+  font-weight: bold;
+}
