@@ -1,3 +1,10 @@
+.todo-list {
+  padding: 16px 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: start;
+}
 .todo-list-item {
   list-style: none;
 }

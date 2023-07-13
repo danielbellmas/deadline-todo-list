@@ -11,22 +11,28 @@ interface TodoListProps {
 
 export const TodoList: FC<TodoListProps> = ({ todos, setTodos }) => {
   const onRemoveTodo = async (selectedTodo: Todo) => {
-    setTodos(todos.filter(todo => todo._id !== selectedTodo._id));
-
-    await deleteTodo(selectedTodo._id);
+    try {
+      await deleteTodo(selectedTodo._id);
+      setTodos(todos.filter(todo => todo._id !== selectedTodo._id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onEditTodo = async (selectedTodo: Todo) => {
-    setTodos(todos.map(todo => (todo._id === selectedTodo._id ? selectedTodo : todo)));
-
-    await updateTodo(selectedTodo);
+    try {
+      await updateTodo(selectedTodo);
+      setTodos(todos.map(todo => (todo._id === selectedTodo._id ? selectedTodo : todo)));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <ul>
+    <ul className='todo-list'>
       {todos.map(todo => (
-        <li className="todo-list-item">
-          <TodoListItem key={todo._id} todo={todo} onRemove={onRemoveTodo} onEdit={onEditTodo} />
+        <li key={todo._id} className="todo-list-item">
+          <TodoListItem todo={todo} onRemove={onRemoveTodo} onEdit={onEditTodo} />
         </li>
       ))}
     </ul>
