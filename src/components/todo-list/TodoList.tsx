@@ -15,7 +15,7 @@ export const TodoList: FC<TodoListProps> = ({ todos, setTodos }) => {
       await deleteTodo(selectedTodo._id);
       setTodos(todos.filter(todo => todo._id !== selectedTodo._id));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -24,12 +24,12 @@ export const TodoList: FC<TodoListProps> = ({ todos, setTodos }) => {
       await updateTodo(selectedTodo);
       setTodos(todos.map(todo => (todo._id === selectedTodo._id ? selectedTodo : todo)));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   return (
-    <ul className='todo-list'>
+    <ul className="todo-list">
       {todos.map(todo => (
         <li key={todo._id} className="todo-list-item">
           <TodoListItem todo={todo} onRemove={onRemoveTodo} onEdit={onEditTodo} />

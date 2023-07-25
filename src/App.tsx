@@ -13,7 +13,7 @@ const App = () => {
       try {
         setTodos(await fetchAllTodos());
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     })();
   }, []);
@@ -24,7 +24,7 @@ const App = () => {
 
       setTodos([...todos, createdTodo]);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
